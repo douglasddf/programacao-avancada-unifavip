@@ -6,7 +6,9 @@
  */
 package aula02.main;
 
-import modulos.emissor.EmissorCreator;
+import modulos.emissor.EmissorEmail;
+import modulos.emissor.EmissorJMS;
+import modulos.emissor.EmissorSMS;
 import modulos.emissor.IEmissor;
 import telas.TelaInicial;
 
@@ -22,22 +24,21 @@ public class Aula02Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
+        new TelaInicial().setVisible(true);
         
         
-        // new TelaInicial().setVisible(true);
-        
-        
-        EmissorCreator emissorCreator = new EmissorCreator();
-        
-        IEmissor emissor1 = emissorCreator.create(EmissorCreator.SMS);
+/*        
+        IEmissor emissor1 = new EmissorEmail();
         emissor1.envia("Teste de mensagem 1");
         
-        IEmissor emissor2 = emissorCreator.create(EmissorCreator.EMAIL);
+        IEmissor emissor2 = new EmissorSMS();
         emissor2.envia("Teste de mensagem 2");
                 
-        IEmissor emissor3 = emissorCreator.create(EmissorCreator.JMS);
+        IEmissor emissor3 = new EmissorJMS();
         emissor3.envia("Teste de mensagem 3");
+*/
+
     }
     
 }

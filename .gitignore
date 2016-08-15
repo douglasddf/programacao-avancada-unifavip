@@ -13,3 +13,5 @@ hs_err_pid*
 /Aula02-creator/nbproject/private/
 /Aula02-factory/nbproject/private/
 /Aula02-factory/build/
+/Aula02-creator/build/
+/Aula02-creator/dist/
