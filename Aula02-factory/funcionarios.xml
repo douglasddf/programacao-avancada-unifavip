@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-<comment>ultima atualizacao: 15-08-2016 13:46</comment>
-<entry key="nome_1">Douglas Frari</entry>
-<entry key="login_1">df</entry>
-<entry key="salario_1">1000.0</entry>
-<entry key="senha_1">698dc19d489c4e4db73e28a713eab07b</entry>
+<comment>ultima atualizacao: 15-08-2016 18:07</comment>
+<entry key="login_3">xuxa</entry>
 <entry key="codigo_1">1</entry>
+<entry key="login_2">maria</entry>
+<entry key="salario_3">1000.0</entry>
+<entry key="login_1">df</entry>
+<entry key="salario_2">2000.0</entry>
+<entry key="salario_1">1000.0</entry>
+<entry key="nome_3">XUXA</entry>
+<entry key="senha_3">698dc19d489c4e4db73e28a713eab07b</entry>
+<entry key="nome_2">Maria</entry>
+<entry key="senha_2">698dc19d489c4e4db73e28a713eab07b</entry>
+<entry key="nome_1">Douglas Frari</entry>
+<entry key="senha_1">698dc19d489c4e4db73e28a713eab07b</entry>
+<entry key="codigo_3">3</entry>
+<entry key="codigo_2">2</entry>
 </properties>

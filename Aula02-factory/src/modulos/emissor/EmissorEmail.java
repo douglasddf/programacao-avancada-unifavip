@@ -9,12 +9,14 @@ package modulos.emissor;
  *
  * @author dddf
  */
-public class EmissorEmail implements IEmissor {
+abstract class EmissorEmail implements IEmissor {
 
     @Override
     public void envia(String mensagem) {
-        System.out.println("Enviando por email a mensagem: ");
-        System.out.println(mensagem);
+        
+        enviaImpl(mensagem);
     }
+    
+    abstract protected void enviaImpl(String mensagem);
     
 }

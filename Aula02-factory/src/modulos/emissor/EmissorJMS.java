@@ -9,7 +9,7 @@ package modulos.emissor;
  *
  * @author dddf
  */
-public class EmissorJMS implements IEmissor {
+class EmissorJMS implements IEmissor {
 
     @Override
     public void envia(String mensagem) {

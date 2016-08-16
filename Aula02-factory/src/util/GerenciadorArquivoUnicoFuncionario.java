@@ -10,11 +10,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,96 +21,10 @@ import dados.Funcionario;
  *
  * @author douglasdanieldelfrari
  */
-public final class Arquivos {
+public final class GerenciadorArquivoUnicoFuncionario extends GerenciadorArquivo {
 
-    private static final String FOLDER_NAME = "arquivos";
-    private static final String NOME_ARQUIVO_SERIALIZADO = FOLDER_NAME+File.separator+"funcionario_";
-    private static final String ARQUIVO_BANCO_DADOS_XML = "funcionarios.xml";
+    private GerenciadorArquivoUnicoFuncionario() {
 
-    private Arquivos() {
-
-    }
-
-    public static void gravarFuncionarioEmArquivo(final Funcionario funcionario) {
-
-        ObjectOutputStream obj = null;
-        FileOutputStream arqGravar = null;
-
-        try {
-
-            checkFolder();
-            
-            // Gera o arquivo para armazenar o objeto
-            arqGravar = new FileOutputStream(
-                    NOME_ARQUIVO_SERIALIZADO + funcionario.getCodigo());
-
-            // inserir objetos
-            obj = new ObjectOutputStream(arqGravar);
-
-            // Gravar o objeto no arquivo
-            obj.writeObject(funcionario);
-
-            System.out.println("Objeto gravado com sucesso! -> " + funcionario);
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-
-        } finally {
-
-            try {
-                if (obj != null) {
-                    obj.flush();
-                    obj.close();
-                }
-
-                if (arqGravar != null) {
-                    arqGravar.flush();
-                    arqGravar.close();
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-        }
-    }
-
-    public static Funcionario recuperarFuncionarioDeArquivo(final int codigo) {
-
-        Funcionario funcionario = null;
-        FileInputStream arqRead = null;
-        ObjectInputStream objRead = null;
-
-        try {
-            // Carrega o arquivo
-            arqRead = new FileInputStream(NOME_ARQUIVO_SERIALIZADO + codigo);
-
-            // recuperar os objetos do arquivo
-            objRead = new ObjectInputStream(arqRead);
-            funcionario = (Funcionario) objRead.readObject();
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-
-        } finally {
-
-            try {
-                if (objRead != null) {
-                    objRead.close();
-                }
-
-                if (arqRead != null) {
-                    arqRead.close();
-                }
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        return funcionario;
     }
 
     /**
@@ -139,7 +48,7 @@ public final class Arquivos {
         try {
 
             Properties properties = new Properties();
-            
+
             File file = new File(ARQUIVO_BANCO_DADOS_XML);
             if (file.isFile()) {
                 System.out.println("lendo arquivo: " + file.getAbsolutePath());
@@ -270,94 +179,30 @@ public final class Arquivos {
         Funcionario.setContador(contadorAtual);
     }
 
-    public static String convertPasswordToMD5(String password)
-            throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("MD5");
-
-        BigInteger hash = new BigInteger(1, md.digest(password.getBytes()));
-
-        return String.format("%32x", hash);
-    }
-
     // para testar funcionalidades
     public static void main(String[] args) {
-        try {
-            // Gravando exemplos de teste
 
-			Funcionario funcionario1 = new Funcionario("Nome 1", 2000.0,"login1", convertPasswordToMD5("senha1"));
-			Funcionario funcionario2 = new Funcionario("Nome 2", 3000.0,"login2", convertPasswordToMD5("senha2"));
-//			
-			gravarFuncionarioEmArquivo(funcionario1);
-			gravarFuncionarioEmArquivo(funcionario2);
-            // recuperando da pasta arquivos
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ArrayList<Funcionario> funcionarios = recuperarFuncionarios();
 
-    }
+        if (funcionarios.isEmpty()) {
+            System.out.println("- criando dados -");
 
-    private static void prepararDados(final File file) {
+            try {
 
-        if (file.isDirectory()) {
-            System.out.println("pasta existente...");
+                Funcionario funcionario1 = new Funcionario("Nome 1", 2000.0, "login1", Util.convertPasswordToMD5("senha1"));
+                Funcionario funcionario2 = new Funcionario("Nome 2", 3000.0, "login2", Util.convertPasswordToMD5("senha2"));
 
-        } else {
-            System.out.println("criando pasta ...");
-            file.mkdir();
-        }
-    }
-
-    public static ArrayList<Funcionario> processarArquivos() {
-
-        File file = new File("arquivos");
-        prepararDados(file);
-        ArrayList<Funcionario> funcionarios = new ArrayList<Funcionario>();
-
-        String[] files = file.list();
-        if (files.length != 0) {
-
-            for (int i = 0; i < files.length; i++) {
-
-                int index = files[i].indexOf("_");
-                String codigo = files[i].substring(index + 1);
-
-                Funcionario funcionario = recuperarFuncionarioDeArquivo(Integer.parseInt(codigo));
-                if (funcionario != null) {
-                    funcionarios.add(funcionario);
-                }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
 
-            System.out.println("CARREGANDO DADOS...");
+        } else {
+            System.out.println("- recuperando dados -");
             for (Funcionario funcionario : funcionarios) {
                 System.out.println(funcionario);
             }
         }
 
-        return funcionarios;
     }
 
-    
-    private static void checkFolder() {
-        File theDir = new File(FOLDER_NAME);
-
-        // if the directory does not exist, create it
-        if (!theDir.exists()) {
-            System.out.println("creating directory: " + FOLDER_NAME);
-            boolean result = false;
-
-            try{
-                theDir.mkdir();
-                result = true;
-            } 
-            catch(SecurityException se){
-                //handle it
-                System.out.println(se.getMessage());  
-            }        
-            if(result) {    
-                System.out.println("DIR created");  
-            }
-        }
-    }
-    
 }
-

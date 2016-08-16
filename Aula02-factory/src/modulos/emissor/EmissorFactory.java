@@ -7,15 +7,14 @@ package modulos.emissor;
 
 /**
  *
- * @author dddf
+ * @author douglasfrari
  */
-class EmissorSMS implements IEmissor {
+public abstract class EmissorFactory {
 
-    @Override
-    public void envia(String mensagem) {
-        System.out.println("Enviando por SMS a mensagem: ");
-        System.out.println(mensagem);
-    }
+    public static final int SMS = 0;
+    public static final int EMAIL = 1;
+    public static final int JMS = 2;
     
     
 }
+

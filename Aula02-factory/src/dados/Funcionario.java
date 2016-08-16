@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import util.Arquivos;
+import util.GerenciadorArquivoUnicoFuncionario;
+import util.Util;
 
 
 /**
@@ -43,7 +44,10 @@ public class Funcionario extends Pessoa implements Serializable
             this.nome = nome;
             this.salario = salario;
             this.login = login;
-            this.senha = Arquivos.convertPasswordToMD5(senha);
+            
+            // criptografa senha
+            this.senha = Util.convertPasswordToMD5(senha); 
+            
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(Funcionario.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -51,7 +55,7 @@ public class Funcionario extends Pessoa implements Serializable
 
     public Funcionario() {
         // default
-        
+        this.codigo = contador++;
     }
     
     public void atualizarLucroDeVendas(double lucro) {

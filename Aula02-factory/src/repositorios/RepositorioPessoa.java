@@ -4,7 +4,7 @@ package repositorios;
 import dados.Funcionario;
 import dados.Cliente;
 import java.util.ArrayList;
-import util.Arquivos;
+import util.GerenciadorArquivoUnicoFuncionario;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -75,7 +75,7 @@ public class RepositorioPessoa {
         boolean resultado = false;
         
         
-        Arquivos.salvarFuncionarios(funcionarios, funcionariosEmArquivo);
+        GerenciadorArquivoUnicoFuncionario.salvarFuncionarios(funcionarios, funcionariosEmArquivo);
         
         return resultado;
                 
@@ -86,7 +86,7 @@ public class RepositorioPessoa {
      * listas de dados em memória.
      */
     private void recuperarDadosEmArquivo() {
-        funcionariosEmArquivo = Arquivos.recuperarFuncionarios();
+        funcionariosEmArquivo = GerenciadorArquivoUnicoFuncionario.recuperarFuncionarios();
         funcionarios = new ArrayList<Funcionario>(funcionariosEmArquivo);
         
     }
