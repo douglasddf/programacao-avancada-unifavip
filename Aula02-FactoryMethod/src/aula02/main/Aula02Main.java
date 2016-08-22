@@ -8,9 +8,10 @@ package aula02.main;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-//import modulos.emissor.EmissorFactory;
-//import modulos.emissor.EmissorFactoryAssincrono;
-//import modulos.emissor.IEmissor;
+import modulos.emissor.FactoryMethodEmissor;
+import modulos.emissor.FactoryMethodEmissorSincrono;
+import modulos.emissor.FactoryMethodEmissorAssincrono;
+import modulos.emissor.IEmissor;
 import telas.TelaInicial;
 import telas.TelaLogin;
 
@@ -29,12 +30,18 @@ public class Aula02Main {
         
         new TelaLogin().setVisible(true);
 
-/*        
-        EmissorFactoryAssincrono factory = new EmissorFactoryAssincrono();
+        
+        
+        
+        /**
+         * TESTES do padrao: FactoryMethod
+         */
+        
+        FactoryMethodEmissorAssincrono factory = new FactoryMethodEmissorAssincrono();
         
         IEmissor emissor1;
         try {
-            emissor1 = factory.create(EmissorFactory.EMAIL);
+            emissor1 = factory.create(FactoryMethodEmissor.EMAIL);
             emissor1.envia("Teste de mensagem EMAIL");
             
         } catch (Exception ex) {
@@ -44,7 +51,7 @@ public class Aula02Main {
         
         IEmissor emissor2;
         try {
-            emissor2 = factory.create(EmissorFactory.SMS);
+            emissor2 = factory.create(FactoryMethodEmissor.SMS);
             emissor2.envia("Teste de mensagem SMS");
         } catch (Exception ex) {
             Logger.getLogger(Aula02Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -53,14 +60,11 @@ public class Aula02Main {
                 
         IEmissor emissor3;
         try {
-            emissor3 = factory.create(EmissorFactory.JMS);
+            emissor3 = factory.create(FactoryMethodEmissor.JMS);
             emissor3.envia("Teste de mensagem JMS");
         } catch (Exception ex) {
             Logger.getLogger(Aula02Main.class.getName()).log(Level.SEVERE, null, ex);
         }
- */      
-
-
 
     }
     
