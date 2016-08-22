@@ -20,3 +20,5 @@ hs_err_pid*
 /Aula02-FactoryMethod/nbproject/private/
 /Aula02-FactoryMethod/build/
 /Aula02-FactoryMethod/dist/
+/Aula03-AbstractFactory/build/
+/Aula03-AbstractFactory/dist/

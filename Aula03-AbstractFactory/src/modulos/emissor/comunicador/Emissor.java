@@ -3,20 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modulos.emissor;
+package modulos.emissor.comunicador;
 
 /**
  *
  * @author dddf
  */
-public class EmissorSMSSincrono extends EmissorSMS {
+public class Emissor implements IEmissor {
 
     @Override
-    protected void enviaImpl(String mensagem) {
-        System.out.println("Enviando por SMS SINCRONO a mensagem: ");
+    public void envia(String mensagem) {
+        System.out.println("Enviando pagamento pelo EMISSOR ");
         System.out.println(mensagem);
     }
-    
-    
     
 }

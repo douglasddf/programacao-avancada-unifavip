@@ -3,18 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modulos.emissor;
+package modulos.emissor.comunicador;
 
 /**
  *
  * @author dddf
  */
-abstract class EmissorSMS implements IEmissor {
-
-    @Override
-    public void envia(String mensagem) {
-        enviaImpl(mensagem);
-    }
+public interface IEmissor {
+ 
+    void envia(String mensagem);
     
-    abstract protected void enviaImpl(String mensagem);
 }
