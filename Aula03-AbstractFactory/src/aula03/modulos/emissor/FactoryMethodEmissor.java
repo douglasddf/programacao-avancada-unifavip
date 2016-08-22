@@ -9,11 +9,13 @@ package modulos.emissor;
  *
  * @author douglasfrari
  */
-public abstract class EmissorFactory {
+public abstract class FactoryMethodEmissor {
 
     public static final int SMS = 0;
     public static final int EMAIL = 1;
     public static final int JMS = 2;
+    
+    public abstract IEmissor create(int tipoDeEmissor) throws Exception;
     
     
 }

@@ -9,13 +9,14 @@ package modulos.emissor;
  *
  * @author dddf
  */
-class EmissorSMS implements IEmissor {
+public class EmissorSMSSincrono extends EmissorSMS {
 
     @Override
-    public void envia(String mensagem) {
-        System.out.println("Enviando por SMS a mensagem: ");
+    protected void enviaImpl(String mensagem) {
+        System.out.println("Enviando por SMS SINCRONO a mensagem: ");
         System.out.println(mensagem);
     }
+    
     
     
 }

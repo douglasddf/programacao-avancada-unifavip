@@ -9,12 +9,13 @@ package modulos.emissor;
  *
  * @author dddf
  */
-class EmissorJMS implements IEmissor {
+public class EmissorJSMSincrono extends EmissorJMS {
 
     @Override
-    public void envia(String mensagem) {
-        System.out.println("Enviando por JMS a mensagem: ");
+    protected void enviaImpl(String mensagem) {
+        System.out.println("Enviando por JMS SINCRONO a mensagem: ");
         System.out.println(mensagem);        
+
     }
     
 }

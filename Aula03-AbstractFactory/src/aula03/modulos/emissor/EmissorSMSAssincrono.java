@@ -7,15 +7,13 @@ package modulos.emissor;
 
 /**
  *
- * @author douglasfrari
+ * @author dddf
  */
-public class EmissorEmailSincrono extends EmissorEmail {
+public class EmissorSMSAssincrono extends EmissorSMS {
 
     @Override
     protected void enviaImpl(String mensagem) {
-        System.out.println("- EmissorEmailSincrono -");
-        
-        System.out.println("Enviando por email a mensagem: ");
+        System.out.println("Enviando por SMS ASSINCRONO a mensagem: ");
         System.out.println(mensagem);
     }
     
