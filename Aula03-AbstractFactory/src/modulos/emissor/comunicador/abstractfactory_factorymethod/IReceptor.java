@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modulos.emissor.comunicador;
+package modulos.emissor.comunicador.abstractfactory_factorymethod;
 
 /**
  *
- * @author dddf
+ * @author douglasfrari
  */
 public interface IReceptor {
-    
-    String recebe();
-    
+    public String recebe();
 }

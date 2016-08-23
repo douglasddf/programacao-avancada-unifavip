@@ -16,11 +16,19 @@ import util.GerenciadorArquivoUnicoFuncionario;
  */
 public class TelaCadastrarFuncionario extends javax.swing.JFrame {
 
+    private boolean cadastrarNovoUsuario;
+
     /**
      * Creates new form TelaCadastrarFuncionario
      */
     public TelaCadastrarFuncionario() {
         initComponents();
+    }
+    
+    public TelaCadastrarFuncionario(boolean cadastrarNovoUsuario) {
+        this();
+        
+        this.cadastrarNovoUsuario = cadastrarNovoUsuario;
     }
 
     /**
@@ -45,6 +53,16 @@ public class TelaCadastrarFuncionario extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowStateListener(new java.awt.event.WindowStateListener() {
+            public void windowStateChanged(java.awt.event.WindowEvent evt) {
+                formWindowStateChanged(evt);
+            }
+        });
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
 
         jLabel1.setText("Nome:");
 
@@ -152,13 +170,39 @@ public class TelaCadastrarFuncionario extends javax.swing.JFrame {
         
         JOptionPane.showMessageDialog(rootPane, "Funcionário Salvo! \n\n"+funcionario);
         this.dispose();
+        
+        if (this.cadastrarNovoUsuario) {
+            new TelaLogin().setVisible(true);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // acao CANCELAR
+        // acao CANCELAR                
+        exibirMensagemUsuarioNaoCadastrado();
         this.dispose();
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void formWindowStateChanged(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowStateChanged
+        // TODO add your handling code here:
+        
+        exibirMensagemUsuarioNaoCadastrado();
+    }//GEN-LAST:event_formWindowStateChanged
+
+    
+    
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // acao de CLOSED da janela
+        exibirMensagemUsuarioNaoCadastrado();
+    }//GEN-LAST:event_formWindowClosed
+
+    private void exibirMensagemUsuarioNaoCadastrado() {
+        if (this.cadastrarNovoUsuario) {
+            JOptionPane.showMessageDialog(rootPane, "Usuário ainda não cadastrado!");            
+            System.exit(0); // encerra instancia da JVM
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */

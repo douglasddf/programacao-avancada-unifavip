@@ -11,7 +11,7 @@ import java.io.File;
  *
  * @author douglasfrari
  */
-public abstract class GerenciadorArquivo {
+abstract class GerenciadorArquivo {
     
     protected static final String FOLDER_NAME = "arquivos";
     protected static final String NOME_ARQUIVO_SERIALIZADO = FOLDER_NAME+File.separator+"funcionario_";

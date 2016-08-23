@@ -3,18 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modulos.emissor.comunicador;
+package modulos.emissor.comunicador.abstractfactory;
 
 /**
  *
  * @author dddf
  */
-public class Cartao {
+public class Cartao1 {
     
     
     private String bandeira;
 
-    public Cartao(TipoCartao tipoCartao) {
+    public Cartao1(TipoCartao tipoCartao) {
         
         this.bandeira = tipoCartao.getValue();
         

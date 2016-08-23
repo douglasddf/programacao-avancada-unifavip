@@ -3,24 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modulos.emissor.comunicador;
+package modulos.emissor.comunicador.abstractfactory;
 
 /**
  *
  * @author dddf
  */
-public class MastercardComunicadorFactory implements IComunicadorFactory {
+public class MastercardComunicadorFactory1 implements IComunicadorFactory1 {
 
     
     
     @Override
-    public Emissor createEmissor() {
-        return new Emissor();
+    public Emissor1 createEmissor() {
+        return new Emissor1();
     }
 
     @Override
-    public Receptor createReceptor() {
-        return new Receptor();
+    public Receptor1 createReceptor() {
+        return new Receptor1();
     }
     
     

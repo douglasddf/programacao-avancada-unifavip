@@ -3,18 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modulos.emissor.comunicador;
+package modulos.emissor.comunicador.abstractfactory_factorymethod;
 
 /**
  *
- * @author dddf
+ * @author douglasfrari
  */
-public class Emissor implements IEmissor {
+class EmissorVisa implements IEmissor {
 
     @Override
     public void envia(String mensagem) {
-        System.out.println("Enviando pagamento pelo EMISSOR ");
+        System.out.println("-->> Enviando mensagem para a VISA -->>");
         System.out.println(mensagem);
     }
+    
     
 }

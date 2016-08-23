@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modulos.emissor.comunicador;
+package modulos.emissor.comunicador.abstractfactory;
 
 /**
  *
  * @author dddf
  */
-public interface IComunicadorFactory {
+public interface IEmissor1 {
+ 
+    void envia(String mensagem);
     
-    public Emissor createEmissor();
-    public Receptor createReceptor();
 }
