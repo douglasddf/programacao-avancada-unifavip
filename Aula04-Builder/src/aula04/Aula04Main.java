@@ -9,6 +9,7 @@ import exemplos.builder.Boleto;
 import exemplos.builder.bancos.BBBoletoBuilder;
 import exemplos.builder.BoletoBuilder;
 import exemplos.builder.GeradorDeBoleto;
+import padrao.builder.Computer;
 
 /**
  *
@@ -32,6 +33,15 @@ public class Aula04Main {
         GeradorDeBoleto geradorDeBoleto = new GeradorDeBoleto(boletoBuilder);
         Boleto boleto = geradorDeBoleto.geraBoleto();
         System.out.println(boleto);
+        
+        
+        Computer computador1 = new Computer.ComputerBuilder("320 GB", "8 GB")
+                .setBluetoothEnabled(true)
+                .setGraphicsCardEnabled(true)
+                .builder();
+        
+        
+        StringBuilder textosConcatenados = new StringBuilder().append("OI").append("\nOI 2");
     }
     
 }
