@@ -29,18 +29,19 @@ public class Aula04Main {
      */
     public static void main(String[] args) {
         
+        // Versao antiga (nao recomendada, mas funcional)
         BoletoBuilder boletoBuilder = new BBBoletoBuilder();
         GeradorDeBoleto geradorDeBoleto = new GeradorDeBoleto(boletoBuilder);
         Boleto boleto = geradorDeBoleto.geraBoleto();
         System.out.println(boleto);
         
-        
+        // Exemplo de Builer em nossa classe
         Computer computador1 = new Computer.ComputerBuilder("320 GB", "8 GB")
                 .setBluetoothEnabled(true)
                 .setGraphicsCardEnabled(true)
                 .builder();
         
-        
+        // Exemplo utilizando uma biblioteca do Java (JDK)
         StringBuilder textosConcatenados = new StringBuilder().append("OI").append("\nOI 2");
     }
     
